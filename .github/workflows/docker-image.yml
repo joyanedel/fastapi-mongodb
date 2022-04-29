@@ -13,4 +13,12 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Build the Docker image
+      run: docker-compose build
+      
+  deploy:
+  
+    runs-on: self-hosted
+    
+    steps:
+    - name: Run the Docker application
       run: docker-compose up
