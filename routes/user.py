@@ -34,5 +34,5 @@ def update(id: str, user: User):
 
 @user.delete('/users/{id}', status_code=status.HTTP_204_NO_CONTENT)
 def delete(id: str):
-    """Delete user from system by its id"""
+    """Delete user from system by its id, lol"""
     conn.local.user.find_one_and_delete({'_id': ObjectId(id)})
