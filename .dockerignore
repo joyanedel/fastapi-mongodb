@@ -1,0 +1,6 @@
+# ignore this file in build
+*/__pycache__*
+/env
+.dockerignore
+Dockerfile
+docker-compose.yml

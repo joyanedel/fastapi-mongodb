@@ -1,0 +1,25 @@
+version: "3.8"
+
+services:
+  db:
+    image: mongo:latest
+    hostname: mongo
+    container_name: mongo-api
+    healthcheck:
+      test: echo 'db.runCommand("ping").ok' | mongo mongo:27017/test --quiet
+      interval: 5s
+      timeout: 10s
+      retries: 5
+  
+  api:
+    build: .
+    hostname: fast-api
+    container_name: fast-api
+    command: uvicorn app:app --host 0.0.0.0 --port 80
+    ports:
+      - "9000:80"
+    volumes:
+      - .:/src
+    depends_on:
+      db:
+        condition: service_healthy
