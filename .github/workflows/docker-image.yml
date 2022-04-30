@@ -14,6 +14,7 @@ jobs:
 
   build:
     runs-on: self-hosted
+    needs: stop
     steps:
     - uses: actions/checkout@v3
     - name: Build the Docker image
@@ -21,7 +22,10 @@ jobs:
       
   deploy:
     runs-on: self-hosted
-    
+    needs: build
     steps:
-    - name: Run the Docker application
-      run: docker-compose up
+    - name: Run the database
+      run: docker-compose start db
+    
+    - name: Run Fast API
+      run: docker-compose start api
