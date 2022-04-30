@@ -15,6 +15,7 @@ services:
     build: .
     hostname: fast-api
     container_name: fast-api
+    user: 1001:1001
     command: uvicorn app:app --host 0.0.0.0 --port 80
     ports:
       - "9000:80"
