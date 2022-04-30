@@ -37,6 +37,6 @@ def delete(id: str):
     """Delete user from system by its id"""
     conn.local.user.find_one_and_delete({'_id': ObjectId(id)})
 
-@user.get('/peo')
+@user.get('/future')
 def peo():
-    return "peo"
+    return "I'm starting a new job in My Future AI"
