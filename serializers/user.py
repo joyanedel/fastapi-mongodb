@@ -1,5 +1,3 @@
-from passlib.hash import sha256_crypt
-
 def userEntity(item) -> dict:
     return {
         "id": str(item["_id"]),

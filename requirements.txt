@@ -1,4 +1,5 @@
 fastapi
-pymongo
+pymongo[srv]
 passlib
 uvicorn
+motor

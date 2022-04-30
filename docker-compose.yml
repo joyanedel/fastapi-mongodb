@@ -5,6 +5,8 @@ services:
     image: mongo:latest
     hostname: mongo
     container_name: mongo-api
+    ports:
+      - "8007:27017"
     healthcheck:
       test: echo 'db.runCommand("ping").ok' | mongo mongo:27017/test --quiet
       interval: 5s
