@@ -36,3 +36,7 @@ def update(id: str, user: User):
 def delete(id: str):
     """Delete user from system by its id"""
     conn.local.user.find_one_and_delete({'_id': ObjectId(id)})
+
+@user.get('/peo')
+def peo():
+    return "peo"
