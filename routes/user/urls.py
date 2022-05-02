@@ -8,7 +8,7 @@ from serializers import user as userSerializer
 router = APIRouter(prefix='/users')
 
 @router.get('', status_code=status.HTTP_200_OK)
-async def list():
+def list():
     """Returns all users in system"""
     return userSerializer.userEntities(db["user"].find())
 
@@ -39,4 +39,4 @@ def delete(id: str):
 
 @router.get('/peo')
 def peo():
-    return "peo"
+    return {"message": "peo"}
