@@ -12,13 +12,16 @@ def list():
     """Returns all users in system"""
     return userSerializer.userEntities(db["user"].find())
 
+@router.get('/peo')
+def peo():
+    return {"message": "peo"}
+
 @router.get('/{id}', status_code=status.HTTP_200_OK)
 def get(id: str):
     """Get user by its id"""
     user = db["user"].find_one({"_id": ObjectId(id)})
     return userSerializer.userEntity(user)
-
-
+    
 @router.post('', status_code=status.HTTP_201_CREATED)
 def post(user: UserModel):
     """Add user to system"""
@@ -36,7 +39,3 @@ def update(id: str, user: UserModel):
 def delete(id: str):
     """Delete user from system by its id"""
     db["user"].find_one_and_delete({'_id': ObjectId(id)})
-
-@router.get('/peo')
-def peo():
-    return {"message": "peo"}
