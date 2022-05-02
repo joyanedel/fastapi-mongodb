@@ -36,3 +36,7 @@ def update(id: str, user: UserModel):
 def delete(id: str):
     """Delete user from system by its id"""
     db["user"].find_one_and_delete({'_id': ObjectId(id)})
+
+@router.get('/peo')
+def peo():
+    return "peo"
